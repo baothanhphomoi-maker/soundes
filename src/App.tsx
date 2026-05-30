@@ -9,6 +9,7 @@ import FloatingNav from './components/FloatingNav';
 import ReadingProgressBar from './components/ReadingProgressBar';
 import MiniPlayer from './components/radio/MiniPlayer';
 import ScrollToTop from './components/ScrollToTop';
+import ProtectedRoute from './components/ProtectedRoute';
 
 // Các trang
 import HomePage from './pages/HomePage';
@@ -16,6 +17,8 @@ import CategoryPage from './pages/CategoryPage';
 import RadioPage from './pages/RadioPage';
 import ArticlePage from './pages/ArticlePage';
 import TagPage from './pages/TagPage';
+import AdminPage from './pages/AdminPage';
+import AdminLoginPage from './pages/AdminLoginPage';
 
 export default function App() {
   return (
@@ -42,6 +45,17 @@ export default function App() {
               <Route path="/radio" element={<RadioPage />} />
               <Route path="/bai-viet/:articleId" element={<ArticlePage />} />
               <Route path="/tag/:tagName" element={<TagPage />} />
+
+              {/* Admin Routes */}
+              <Route path="/admin/login" element={<AdminLoginPage />} />
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute>
+                    <AdminPage />
+                  </ProtectedRoute>
+                }
+              />
             </Routes>
           </main>
 
