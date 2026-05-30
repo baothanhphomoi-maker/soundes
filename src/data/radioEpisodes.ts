@@ -13,7 +13,6 @@ export interface RadioEpisode {
   };
   publishDate: string;
   publishTime: string;
-  listenerCount: number;
   tags: string[];
   isLive?: boolean;
 }
@@ -39,7 +38,6 @@ export const radioEpisodes: RadioEpisode[] = [
     },
     publishDate: '2026-05-29',
     publishTime: '07:00',
-    listenerCount: 24567,
     tags: ['Giao thông', 'Hạ tầng', 'TP.HCM'],
     isLive: true,
   },
@@ -58,7 +56,6 @@ export const radioEpisodes: RadioEpisode[] = [
     },
     publishDate: '2026-05-28',
     publishTime: '19:00',
-    listenerCount: 18934,
     tags: ['Kinh tế số', 'Chuyển đổi số', 'Doanh nghiệp'],
   },
   {
@@ -76,7 +73,6 @@ export const radioEpisodes: RadioEpisode[] = [
     },
     publishDate: '2026-05-28',
     publishTime: '20:00',
-    listenerCount: 34210,
     tags: ['Âm nhạc', 'Indie', 'Văn hóa'],
   },
   {
@@ -94,7 +90,6 @@ export const radioEpisodes: RadioEpisode[] = [
     },
     publishDate: '2026-05-27',
     publishTime: '21:00',
-    listenerCount: 15892,
     tags: ['Sức khỏe', 'Sleep', 'Lifestyle'],
   },
   {
@@ -112,7 +107,6 @@ export const radioEpisodes: RadioEpisode[] = [
     },
     publishDate: '2026-05-27',
     publishTime: '18:00',
-    listenerCount: 28345,
     tags: ['AI', 'Công nghệ', 'Xu hướng'],
   },
   {
@@ -130,7 +124,6 @@ export const radioEpisodes: RadioEpisode[] = [
     },
     publishDate: '2026-05-26',
     publishTime: '20:00',
-    listenerCount: 41203,
     tags: ['SEA Games', 'Thể thao', 'Việt Nam'],
   },
   {
@@ -148,7 +141,6 @@ export const radioEpisodes: RadioEpisode[] = [
     },
     publishDate: '2026-05-26',
     publishTime: '19:00',
-    listenerCount: 37689,
     tags: ['Điện ảnh', 'Phim Việt', 'Review'],
   },
   {
@@ -166,7 +158,6 @@ export const radioEpisodes: RadioEpisode[] = [
     },
     publishDate: '2026-05-25',
     publishTime: '17:00',
-    listenerCount: 26781,
     tags: ['Startup', 'Kinh doanh', 'Series A'],
   },
 ];
