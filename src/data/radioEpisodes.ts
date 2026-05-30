@@ -29,7 +29,7 @@ export const radioEpisodes: RadioEpisode[] = [
     title: 'Bản Tin Sáng: TP.HCM Phát Triển Hạ Tầng Metro Số 1',
     description: 'Cập nhật mới nhất về dự án Metro số 1 Bến Thành - Suối Tiên, tiến độ thi công và kế hoạch vận hành thử vào tháng 7/2026. Chương trình có sự tham gia của chuyên gia giao thông đô thị.',
     thumbnail: generateThumbnail('metro-news'),
-    audioUrl: 'https://www.sample-videos.com/audio/mp3/crowd-cheering.mp3',
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
     duration: 1800, // 30 min
     category: 'Thời Sự',
     categoryColor: '#1E3A8A',
@@ -48,7 +48,7 @@ export const radioEpisodes: RadioEpisode[] = [
     title: 'Góc Nhìn Chuyên Gia: Tương Lai Kinh Tế Số Việt Nam',
     description: 'Phân tích sâu về chuyển đổi số trong nền kinh tế Việt Nam, cơ hội và thách thức cho doanh nghiệp SME. Với sự tham gia của TS. Nguyễn Văn A - Chuyên gia kinh tế.',
     thumbnail: generateThumbnail('digital-economy'),
-    audioUrl: 'https://www.sample-videos.com/audio/mp3/forest-rain.mp3',
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
     duration: 2400, // 40 min
     category: 'Kinh Tế',
     categoryColor: '#047857',
@@ -66,7 +66,7 @@ export const radioEpisodes: RadioEpisode[] = [
     title: 'Culture Talk: Làn Sóng Âm Nhạc Indie Việt',
     description: 'Khám phá sự bùng nổ của âm nhạc indie Việt Nam, từ những ca sĩ tự sáng tác đến các festival âm nhạc độc lập. Phỏng vấn đặc biệt với nhạc sĩ Hoàng Touliver.',
     thumbnail: generateThumbnail('indie-music'),
-    audioUrl: 'https://www.sample-videos.com/audio/mp3/sleep-meditation.mp3',
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
     duration: 2700, // 45 min
     category: 'Văn Hóa',
     categoryColor: '#7C3AED',
@@ -84,7 +84,7 @@ export const radioEpisodes: RadioEpisode[] = [
     title: 'Health Hub: Sleep Science - Giấc Ngủ Và Sức Khỏe',
     description: 'Tập đặc biệt về khoa học giấc ngủ với BS. Trần Thị B - Giảng viên Đại học Y Dược TP.HCM. Cẩm nang toàn diện về sleep hygiene và tips cải thiện giấc ngủ.',
     thumbnail: generateThumbnail('sleep-health'),
-    audioUrl: 'https://www.sample-videos.com/audio/mp3/birds-singing.mp3',
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
     duration: 2100, // 35 min
     category: 'Sức Khỏe',
     categoryColor: '#059669',
@@ -102,7 +102,7 @@ export const radioEpisodes: RadioEpisode[] = [
     title: 'Tech Tonight: AI Revolution Trong Cuộc Sống',
     description: 'Đánh giá tác động của trí tuệ nhân tạo trong đời sống hàng ngày, từ trợ lý ảo đến ứng dụng trong y tế và giáo dục. Cùng đón đọc các xu hướng AI 2026.',
     thumbnail: generateThumbnail('ai-revolution'),
-    audioUrl: 'https://www.sample-videos.com/audio/mp3/wave-crashing.mp3',
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',
     duration: 1920, // 32 min
     category: 'Thời Sự',
     categoryColor: '#1E3A8A',
@@ -120,7 +120,7 @@ export const radioEpisodes: RadioEpisode[] = [
     title: 'Sport Focus: SEA Games 33 - Hành Trình Vàng',
     description: 'Special episode về thành tích ấn tượng của đoàn thể thao Việt Nam tại SEA Games 33. Phỏng vấn độc quyền với HLV Park Hang-seo và các VĐV tiêu biểu.',
     thumbnail: generateThumbnail('sea-games'),
-    audioUrl: 'https://www.sample-videos.com/audio/mp3/traffic-noise.mp3',
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',
     duration: 3600, // 60 min
     category: 'Thể Thao',
     categoryColor: '#DC2626',
@@ -138,7 +138,7 @@ export const radioEpisodes: RadioEpisode[] = [
     title: 'Entertainment Weekly: Phim Việt 2026 - Cuộc Cách Mạng Mới',
     description: 'Review các bom tấn phim Việt ra mắt năm 2026, phân tích sự trỗi dậy của điện ảnh Việt Nam. Đặc biệt: phỏng vấn đạo diễn Victor Vũ về dự án mới nhất.',
     thumbnail: generateThumbnail('vietnam-cinema'),
-    audioUrl: 'https://www.sample-videos.com/audio/mp3/dramatic-music.mp3',
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3',
     duration: 2100, // 35 min
     category: 'Giải Trí',
     categoryColor: '#DB2777',
@@ -156,7 +156,7 @@ export const radioEpisodes: RadioEpisode[] = [
     title: 'Business Corner: Startup Stories - Từ 0 Đến Series A',
     description: 'Series đặc biệt kể chuyện các startup Việt thành công, bài học từ founders và chiến lược gọi vốn. Ep 1: Coffee House - Từ quán nhỏ đến chuỗi F&B hàng đầu.',
     thumbnail: generateThumbnail('startup-stories'),
-    audioUrl: 'https://www.sample-videos.com/audio/mp3/spring-birds.mp3',
+    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',
     duration: 2700, // 45 min
     category: 'Kinh Tế',
     categoryColor: '#047857',

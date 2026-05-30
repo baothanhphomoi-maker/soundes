@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useRef, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useRef, useEffect, ReactNode, useCallback } from 'react';
 import { RadioEpisode } from '../data/radioEpisodes';
 import { trackRadioListen } from '../services/api';
 
@@ -22,6 +22,7 @@ interface AudioPlayerContextType {
   setPlaybackRate: (rate: number) => void;
   toggleAutoPlay: () => void;
   allEpisodes: RadioEpisode[];
+  reloadListenCounts: () => void;
 }
 
 const AudioPlayerContext = createContext<AudioPlayerContextType | undefined>(undefined);
@@ -49,7 +50,11 @@ export function AudioPlayerProvider({ children, episodes }: AudioPlayerProviderP
   const [isMuted, setIsMuted] = useState(false);
   const [playbackRate, setPlaybackRateState] = useState(1);
   const [autoPlay, setAutoPlay] = useState(false);
-  const trackedEpisodesRef = useRef<Set<string>>(new Set());
+  const [listenCountVersion, setListenCountVersion] = useState(0);
+
+  const reloadListenCounts = useCallback(() => {
+    setListenCountVersion(v => v + 1);
+  }, []);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -89,33 +94,54 @@ export function AudioPlayerProvider({ children, episodes }: AudioPlayerProviderP
   const playEpisode = (episode: RadioEpisode) => {
     const audio = audioRef.current;
 
-    if (currentEpisode?.id === episode.id) {
-      togglePlay();
+    // If clicking the same episode that's playing, toggle pause/play
+    if (currentEpisode?.id === episode.id && isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
       return;
     }
 
+    // If clicking the same episode that's paused, resume
+    if (currentEpisode?.id === episode.id && !isPlaying) {
+      audio.play()
+        .then(() => setIsPlaying(true))
+        .catch(console.error);
+      return;
+    }
+
+    // New episode - stop current, load new, play immediately
     audio.pause();
     audio.src = episode.audioUrl;
-    audio.play()
-      .then(() => {
-        setCurrentEpisode(episode);
-        setIsPlaying(true);
-        setCurrentTime(0);
 
-        // Track listen only once per episode per session
-        if (!trackedEpisodesRef.current.has(episode.id)) {
-          trackedEpisodesRef.current.add(episode.id);
-          trackRadioListen(episode.id).catch(err => {
+    // Set state immediately for instant UI feedback
+    setCurrentEpisode(episode);
+    setCurrentTime(0);
+
+    // Load and play immediately
+    audio.load();
+
+    const playAudio = async () => {
+      try {
+        // Wait for audio to be ready to play
+        await audio.play();
+        setIsPlaying(true);
+
+        // Track listen for EVERY click (1 click = 1 listen)
+        trackRadioListen(episode.id)
+          .then(() => {
+            // Reload counts after successful track
+            setTimeout(reloadListenCounts, 300);
+          })
+          .catch(err => {
             console.error('Failed to track radio listen:', err);
           });
-        }
-      })
-      .catch(err => {
+      } catch (err) {
         console.error('Playback failed:', err);
-        // Fallback: show episode but mark as not playable
-        setCurrentEpisode(episode);
         setIsPlaying(false);
-      });
+      }
+    };
+
+    playAudio();
   };
 
   const togglePlay = () => {
@@ -208,6 +234,7 @@ export function AudioPlayerProvider({ children, episodes }: AudioPlayerProviderP
         setPlaybackRate,
         toggleAutoPlay,
         allEpisodes: episodes,
+        reloadListenCounts,
       }}
     >
       {children}

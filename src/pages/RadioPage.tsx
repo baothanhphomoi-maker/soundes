@@ -1,16 +1,15 @@
 import { useState, useEffect, useCallback } from 'react';
 import { radioEpisodes } from '../data/radioEpisodes';
-import { fetchRadioListenCounts, trackRadioListen } from '../services/api';
+import { fetchRadioListenCounts } from '../services/api';
 import RadioHero from '../components/radio/RadioHero';
 import RadioGrid from '../components/radio/RadioGrid';
 import SuggestedCarousel from '../components/radio/SuggestedCarousel';
 import { useAudioPlayer } from '../contexts/AudioPlayerContext';
 
 export default function RadioPage() {
-  const { playEpisode } = useAudioPlayer();
+  const { playEpisode, reloadListenCounts } = useAudioPlayer();
   const [listenCounts, setListenCounts] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
-  const trackedRef = new Map<string, boolean>();
 
   const loadListenCounts = useCallback(async () => {
     const counts = await fetchRadioListenCounts();
@@ -21,25 +20,19 @@ export default function RadioPage() {
   useEffect(() => {
     loadListenCounts();
 
-    // Auto-refresh every 5 seconds
-    const interval = setInterval(loadListenCounts, 5000);
+    // Auto-refresh every 3 seconds for real-time updates
+    const interval = setInterval(loadListenCounts, 3000);
     return () => clearInterval(interval);
   }, [loadListenCounts]);
 
+  // Reload when context triggers
+  useEffect(() => {
+    loadListenCounts();
+  }, [loadListenCounts, reloadListenCounts]);
+
   const handlePlayEpisode = useCallback((episode: any) => {
     playEpisode(episode);
-
-    // Track listen immediately
-    if (!trackedRef.has(episode.id)) {
-      trackedRef.set(episode.id, true);
-      trackRadioListen(episode.id).then(() => {
-        // Reload counts after tracking
-        setTimeout(loadListenCounts, 500);
-      }).catch(err => {
-        console.error('Failed to track listen:', err);
-      });
-    }
-  }, [playEpisode, loadListenCounts]);
+  }, [playEpisode]);
 
   if (loading) {
     return (

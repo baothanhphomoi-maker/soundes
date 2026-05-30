@@ -35,8 +35,8 @@ export default function HomePage() {
     }
     loadRadioCounts();
 
-    // Auto-refresh every 30 seconds
-    const interval = setInterval(loadRadioCounts, 30000);
+    // Auto-refresh every 3 seconds for real-time updates
+    const interval = setInterval(loadRadioCounts, 3000);
     return () => clearInterval(interval);
   }, []);
 

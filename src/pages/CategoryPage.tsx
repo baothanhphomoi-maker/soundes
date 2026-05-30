@@ -83,22 +83,6 @@ export default function CategoryPage({ categorySlug }: CategoryPageProps) {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-primary-dark py-12 mt-12">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-2">
-              <div className="bg-white px-4 py-2 rounded-lg">
-                <span className="text-primary-dark font-bold text-lg">TIN TP.HCM</span>
-              </div>
-            </div>
-
-            <div className="text-white/70 text-sm text-center md:text-right">
-              © 2026 TIN TP.HCM. Bảo lưu mọi quyền.
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
